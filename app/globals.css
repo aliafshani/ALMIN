@@ -10,3 +10,11 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+textarea {
+  resize: none;
+}
+
+textarea:focus {
+  outline: brown;
+}

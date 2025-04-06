@@ -1,10 +1,12 @@
 "use client";
+import SubmitInput from "@/components/submitInput";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast, ToastContainer } from 'react-toastify';
 
 
 export default function PhoneNumberPage() {
+  const [clicked, setClicked] = useState(false)
   const [phone, setPhone] = useState("");
   const router = useRouter()
 
@@ -20,17 +22,21 @@ export default function PhoneNumberPage() {
     event.preventDefault();
     const isVallid = phoneRegax.test(phone)
     if (phone.length === 11 && isVallid) {
+      setClicked(true)
 
-      const res = await fetch("/api/send-otp", {
+      const res = await fetch("http://localhost:5000/api/auth/send-otp", {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phone }),
       });
+
       const data = await res.json();
       if (data.success) {
         router.push(`/login/verify?phone=${phone}`);
-        toast.error('خطایی رخ داد !');
-
-      };
+      } else {
+        toast.error('خطایی رخ داد ! لطفا دوباره تلاش کنید');
+        router.push(`/login`);
+      }
     } else {
       toast.warn('شماره تلفن خود را به درستی وارد کنید!')
     }
@@ -51,12 +57,7 @@ export default function PhoneNumberPage() {
             className="w-64 p-3 text-center border-2 border-gray-300 focus:border-fuchsia-800 outline-none rounded-md transition-all"
           />
 
-          <button
-            type="submit"
-            className="mt-4 px-6 py-2 bg-fuchsia-800 text-white rounded-md hover:bg-fuchsia-950 transition-all"
-          >
-            دریافت کد تأیید
-          </button>
+          <SubmitInput clicked={clicked} />
         </form>
       </div>
       <ToastContainer />

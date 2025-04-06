@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 
-export default function Timer({ }) {
+export default function Timer({ sendOtpAgain }) {
   const [timeLeft, setTimeLeft] = useState(120);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function Timer({ }) {
 
       {timeLeft !== 0
         ? <p >برای دریافت مجدد کد {minutes}:{seconds < 10 ? `0${seconds}` : seconds}  صبر کنید</p>
-        : <button className='cursor-pointer' onClick={() => setTimeLeft(120)}>برای دریافت مجدد کد کلیک کنید</button>
+        : <button className='cursor-pointer' onClick={() => { setTimeLeft(120); sendOtpAgain() }}>برای دریافت مجدد کد کلیک کنید</button>
       }
     </div >
 

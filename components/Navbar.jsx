@@ -8,7 +8,7 @@ export default function Navbar({ children }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen" dir="rtl">
+    <main className="relative text-black bg-white min-h-screen" dir="rtl">
       {/* Navbar */}
       <nav className="text-white bg-fuchsia-950">
         <div className="container mx-auto flex justify-between items-center p-4">
@@ -25,7 +25,7 @@ export default function Navbar({ children }) {
           {/* Desktop Menu */}
           <ul className="hidden md:flex space-x-6 ">
             <li className="hover:text-gray-200">
-              <Link href="/orders">سفارشات</Link>
+              <Link href="/user-profile">سفارشات</Link>
             </li>
             <li className="hover:text-gray-200">
               <Link href="/about">تصویه </Link>
@@ -53,7 +53,7 @@ export default function Navbar({ children }) {
         </button>
         <ul className="mt-16 space-y-6 p-4 text-right">
           <li className="hover:text-gray-200">
-            <Link href="/orders" onClick={() => setIsOpen(false)}>سفارشات</Link>
+            <Link href="/user-profile" onClick={() => setIsOpen(false)}>سفارشات</Link>
           </li>
           <li className="hover:text-gray-200">
             <Link href="/about" onClick={() => setIsOpen(false)}>تصویه</Link>
@@ -71,6 +71,6 @@ export default function Navbar({ children }) {
       <main className="p-4 text-right">
         {children}
       </main>
-    </div>
+    </main>
   );
 }

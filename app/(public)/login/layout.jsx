@@ -7,10 +7,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <body dir="rtl" lang="fa">
-      <main className="bg-fuchsia-950 text-white">
-        {children}
-      </main>
-    </body>
+    <main className="bg-fuchsia-950 text-white">
+      {children}
+    </main>
+
   );
 }
