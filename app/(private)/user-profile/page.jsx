@@ -46,34 +46,34 @@ function UserProfilePage() {
 
         <div className="w-4/12 bg-purple-500 p-4 rounded-md">
 
-          <div className="flex justify-center text-white ">
+          <div className="flex justify-center">
             {loading && <p>در حال بارگذاری...</p>}
             {!userData.phone && <p>کاربر وارد نشده است.</p>}
-            {userData.phone && <p> خوش آمدید {userData.phone}</p>}
+            {userData.phone && <p> سلام بر {userData.phone}</p>}
 
           </div>
         </div>
 
 
-        <div className="w-3/12 bg-purple-500 p-4 text-white rounded-md flex flex-col items-center justify-center">
+        <div className="w-3/12 bg-purple-500 p-4 rounded-md flex flex-col items-center justify-center">
           <div className="flex justify-between w-10/12 py-4 border-white border-dashed border-b-2">
-            <p className=" text-xl font-semibold"> حساب : </p>
+            <p className="text-white text-xl font-semibold"> حساب : </p>
             <p className="text-xl pr-2">{covertToPersianInt(wallet)} T</p>
           </div>
           <div className="flex justify-between w-10/12  border-white  py-4 border-b-2">
-            <p className=" "> پروژه های کل : </p>
-            <p className="text-xl pr-2"> {covertToPersianInt(userData.projects?.length)} </p>
+            <p className="text-white "> پروژه های کل : </p>
+            <p className="text-xl pr-2"> {userData.projects?.length} </p>
           </div>
           <div className="flex justify-between w-10/12  border-white py-4 border-b-2">
-            <p className=""> پروژه های تایید شده : </p>
+            <p className="text-white"> پروژه های تایید شده : </p>
             <p className="text-xl pr-2">
-              {covertToPersianInt(userData.projects?.filter(item => item?.status == 'approved').length)}
+              {userData.projects?.filter(item => item?.status == 'approved').length}
             </p>
           </div>
           <div className="flex justify-between  border-white w-10/12 py-4">
-            <p className=" ">پروژه های در انتظار تایید : </p>
+            <p className="text-white ">پروژه های در انتظار تایید : </p>
             <p className="text-xl pr-2">
-              {covertToPersianInt(userData.projects?.filter(item => item?.status == 'pending').length)}
+              {userData.projects?.filter(item => item?.status == 'pending').length}
             </p>
           </div>
         </div>

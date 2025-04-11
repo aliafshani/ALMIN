@@ -1,4 +1,4 @@
-"use client"; // مهمه که از این برای استفاده از hooks در سمت کلاینت استفاده کنید.
+"use client";
 
 import { createContext, useState, useContext, useEffect } from "react";
 
@@ -9,7 +9,7 @@ export const UserProvider = ({ children }) => {
   const [userData, setUserData] = useState([]);
 
 
-  // بارگذاری اطلاعات کاربر از localStorage یا API
+
   useEffect(() => {
     const fetchUser = async () => {
 
@@ -46,5 +46,5 @@ export const UserProvider = ({ children }) => {
   );
 };
 
-// یک هوک برای استفاده از Context
+
 export const useUser = () => useContext(UserContext);
